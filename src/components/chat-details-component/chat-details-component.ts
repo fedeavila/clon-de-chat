@@ -13,20 +13,16 @@ import { ChatService } from '../../services/chat-service';
 })
 export class ChatDetailsComponent {
 
-  // Inyectamos las dependencias acá arriba
   private route = inject(ActivatedRoute);
   public chatService = inject(ChatService);
 
-  // Ahora sí, podemos usar 'this.route' porque inject ya se ejecutó
   private id = this.route.snapshot.paramMap.get('id');
 
-  // La signal reactiva
   chatSignal = computed(() => this.chatService.getChatById(this.id || ''));
 
   newMessageText: string = '';
 
   constructor() {
-    // El constructor queda vacío, ¡más limpio todavía!
   }
 
   sendMessage() {

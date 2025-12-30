@@ -12,11 +12,11 @@ import { ChatService } from '../../services/chat-service';
 export class ChatComponent {
   constructor(public chatService: ChatService, private router: Router) { }
 
-  open(id: string) {
+  openChat(id: string) {
     this.router.navigate(['/chat', id]);
   }
 
-  nuevo() {
+  createNewChat() {
     this.router.navigate(['/nuevo']);
   }
 }

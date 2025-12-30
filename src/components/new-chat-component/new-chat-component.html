@@ -1,12 +1,12 @@
-<h2>Nuevo chat</h2>
+<h2>Nueva conversación</h2>
 
 <form>
   <label for="">
-    Nombre del chat:
+    Tu nombre:
     <input type="text" [(ngModel)]="name" name="chatName" required />
   </label>
   <label for="">
-    Mensaje inicial:
+    Tu mensaje:
     <input type="text" [(ngModel)]="initial" name="initialMessage" required />
   </label>
   <button (click)="createChat()" type="button">Crear chat</button>
