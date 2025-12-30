@@ -4,19 +4,16 @@
 </div>
 <div class="chat-messages">
   @for(message of chatSignal()?.messages; track message.id) {
-  <div class="chat-message">
-    <span class="message-sender">{{message.id}}:</span>
-    <span class="message-text">{{message.text}}</span>
-    <span class="message-timestamp">{{message.date| date:'shortTime'}}</span>
+  <div [ngClass]="message.fromMe ? 'my-message' : 'other-message'">
+    <span class="message-sender">
+      {{ message.fromMe ? 'Yo' : chatSignal()?.name }}:
+    </span>
+    <span class="message-text">{{ message.text }}</span>
+    <span class="message-timestamp">{{ message.date | date:'shortTime' }}</span>
   </div>
-  }
-  @empty {
+  } @empty {
   <p>No hay mensajes todavía...</p>
   }
-</div>
-<div class="chat-new-message">
-  <input type="text" [(ngModel)]="newMessageText" placeholder="Escribe un mensaje..." />
-  <button (click)="sendMessage()">Enviar</button>
 </div>
 
 <form (ngSubmit)="sendMessage()">
@@ -26,3 +23,12 @@
 } @else {
 <p>Chat no encontrado.</p>
 }
+
+<div class="chat-list">
+</div>
+
+<div class="chat-header-actions">
+  <button routerLink="/nuevo" class="btn-volver">
+    Volver
+  </button>
+</div>

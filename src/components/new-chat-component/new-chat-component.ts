@@ -24,7 +24,7 @@ export class NewChatComponent {
       return;
     }
     const newChat: Chat = {
-      id: (Math.random() * 1000000).toString(),
+      id: crypto.randomUUID().toString(),
       name: this.name,
       lastMessage: this.initial,
       messages: [

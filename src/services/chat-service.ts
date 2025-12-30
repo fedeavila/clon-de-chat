@@ -70,6 +70,10 @@ export class ChatService {
     this.chats.update(chats =>
       chats.map(chat => {
         if (chat.id === chatId) {
+          // Chequeamos si el ID ya existe en la lista de mensajes
+          const exists = chat.messages.some(m => m.id === message.id);
+          if (exists) return chat; // Si ya está, devolvemos el chat sin cambios
+
           return {
             ...chat,
             lastMessage: message.text,
@@ -77,8 +81,8 @@ export class ChatService {
           };
         }
         return chat;
-      }
-      ));
+      })
+    );
   }
 
   /* Enviar mensaje (simulado) */
